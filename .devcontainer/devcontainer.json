@@ -1,0 +1,25 @@
+{
+  "name": "Env Dev Container",
+  
+  "build": {
+    "dockerfile": "Dockerfile.dev",
+    "context": ".."
+  },
+  // "dockerComposeFile": "docker-compose.dev.yml",
+  // "service": "app",
+  // "workspaceFolder": "/workspace",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // Python + Pylance for Python dev
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        // Docker extension
+        "ms-azuretools.vscode-docker",
+        // GitHub Copilot extension
+        "GitHub.copilot"
+      ]
+    }
+  }
+}
