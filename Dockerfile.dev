@@ -1,5 +1,7 @@
-# Dockerfile
-FROM python:3.11-slim
+# Dockerfile.dev (multi-stage)
+
+# Stage 1: Build the Base Image
+FROM python:3.11-slim as base
 
 # Set apt to noninteractive mode
 ENV DEBIAN_FRONTEND=noninteractive
@@ -27,3 +29,20 @@ EXPOSE 8000
 
 # Define the default command (for production/UAT, this might run your app)
 CMD ["python", "src/app.py"]
+
+
+
+
+
+
+# Stage 2: Dev Stage - Inherit from the base stage
+FROM base
+
+ENV ENVIRONMENT=development
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends git && \
+    rm -rf /var/lib/apt/lists/* && \
+    pip install --no-cache-dir debugpy
+
+CMD ["tail", "-f", "/dev/null"]

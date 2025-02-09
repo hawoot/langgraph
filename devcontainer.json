@@ -1,0 +1,23 @@
+// put in the folder
+// .devcontainer
+
+{
+  "name": "My Python Dev Environment",
+  "dockerComposeFile": [
+    // "../docker-compose.prod.yml",
+    "../docker-compose.dev.yml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/app",
+  "forwardPorts": [8000, 5678],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ]
+    }
+  },
+  "postCreateCommand": "echo 'Container is ready. Use the integrated terminal to run your commands.'",
+  "remoteUser": "root"
+}

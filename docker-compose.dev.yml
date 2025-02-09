@@ -1,0 +1,15 @@
+# docker-compose.dev.yml
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    environment:
+      - ENVIRONMENT=development
+    env_file: .env
+    ports:
+      - "8000:8000"   # for your app
+      - "5678:5678"   # for remote debugging (debugpy)
+    volumes:
+      - ./src:/app:cached  # Mount your local source code for live editing

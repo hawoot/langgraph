@@ -1,17 +1,17 @@
-version: "3.9"
-
+# docker-compose.uat.yml
+version: '3.8'
 services:
   app:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      - ENVIRONMENT=uat
+    env_file: .env.prod
     ports:
       - "8001:8000"
-    environment:
-      - ENV=uat
+    restart: always
 
-    # Use a command if you didn't define CMD in Dockerfile:
-    # command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
-    # Launch the UAT container manually
-    # docker compose -f docker-compose.uat.yml up --build
+# Launch the UAT container manually
+# docker compose -f docker-compose.uat.yml up --build

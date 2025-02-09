@@ -1,17 +1,17 @@
-version: "3.9"
-
+# docker-compose.prod.yml
+version: '3.8'
 services:
   app:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      - ENVIRONMENT=production
+    env_file: .env.prod
     ports:
       - "8000:8000"
-    environment:
-      - ENV=production
     restart: always
-    # If needed:
-    # command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-    
-    # Launch the UAT container manually
-    # docker compose -f docker-compose.uat.yml up --build
+
+
+# Launch the UAT container manually
+# docker compose -f docker-compose.prod.yml up --build
