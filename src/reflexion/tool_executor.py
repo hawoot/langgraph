@@ -28,7 +28,7 @@ def execute_tools(state: List[BaseMessage]) -> List[ToolMessage]:
         for query in parsed_call["args"]["search_queries"]:
             tool_invocations.append(
                 ToolInvocation(
-                    tool="tavily_search_results_json1",
+                    tool="tavily_search_results_json",
                     tool_input=query,
                 )
             )
